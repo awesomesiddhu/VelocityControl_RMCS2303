@@ -43,8 +43,7 @@ class MinimalModbusNode(Node):
 			self.rmcs2303_fright.write_register(14, rpm, number_of_decimals=0, functioncode=6, signed=False)  # Speed command for base motor in rpm
 			self.rmcs2303_fleft.write_register(14, rpm, number_of_decimals=0, functioncode=6, signed=False)  # Speed command for base motor in rpm
 			self.rmcs2303_rright.write_register(14, rpm, number_of_decimals=0, functioncode=6, signed=False)  # Speed command for base motor in rpm
-			self.rmcs2303_rleft.write_register(14, rpm, number_of_decimals=0, functioncode=6, signed=False)  # Speed command for base motor in rpm
-			
+			self.rmcs2303_rleft.write_register(14, rpm, number_of_decimals=0, functioncode=6, signed=False)  # Speed command for base motor in rpm			
 
 			if (velocity>=0):
 				self.rmcs2303_fright.write_register(2, 257, number_of_decimals=0, functioncode=6, signed=False) # Enable fright motor in CW
@@ -57,8 +56,6 @@ class MinimalModbusNode(Node):
 				self.rmcs2303_rright.write_register(2, 265, number_of_decimals=0, functioncode=6, signed=False) # Enable rright motor in CCW
 				self.rmcs2303_rleft.write_register(2, 257, number_of_decimals=0, functioncode=6, signed=False) # Enable rleft motor in CW
 				
-
-
 			fright_speed_feedback = self.rmcs2303_fright.read_register(24) #current speed feedback
 			fleft_speed_feedback = self.rmcs2303_fleft.read_register(24) #current speed feedback
 			rright_speed_feedback = self.rmcs2303_rright.read_register(24) #current speed feedback
@@ -78,27 +75,23 @@ class MinimalModbusNode(Node):
 				self.rmcs2303_fleft.write_register(2, 256, number_of_decimals=0, functioncode=6, signed=False) # disable motor in CW
 				self.rmcs2303_rright.write_register(2, 264, number_of_decimals=0, functioncode=6, signed=False) # disable motor in CCW
 				self.rmcs2303_rleft.write_register(2, 256, number_of_decimals=0, functioncode=6, signed=False) # disable motor in CW
-				
 
-            self.rmcs2303_fright.write_register(2, 2304, number_of_decimals=0, functioncode=6, signed=False) #restarts the drive
-            self.rmcs2303_fright.write_register(2, 2304, number_of_decimals=0, functioncode=6, signed=False) #restarts the drive
-
-            self.rmcs2303_fleft.write_register(2, 2304, number_of_decimals=0, functioncode=6, signed=False) #restarts the drive
-            self.rmcs2303_fleft.write_register(2, 2304, number_of_decimals=0, functioncode=6, signed=False) #restarts the drive
-
-            self.rmcs2303_rright.write_register(2, 2304, number_of_decimals=0, functioncode=6, signed=False) #restarts the drive
-            self.rmcs2303_rright.write_register(2, 2304, number_of_decimals=0, functioncode=6, signed=False) #restarts the drive
-
-            self.rmcs2303_rleft.write_register(2, 2304, number_of_decimals=0, functioncode=6, signed=False) #restarts the drive
-            self.rmcs2303_rleft.write_register(2, 2304, number_of_decimals=0, functioncode=6, signed=False) #restarts the drive
+			self.rmcs2303_fright.write_register(2, 2304, number_of_decimals=0, functioncode=6, signed=False) #restarts the drive
+			self.rmcs2303_fright.write_register(2, 2304, number_of_decimals=0, functioncode=6, signed=False) #restarts the drive
+			
+			self.rmcs2303_fleft.write_register(2, 2304, number_of_decimals=0, functioncode=6, signed=False) #restarts the drive
+			self.rmcs2303_fleft.write_register(2, 2304, number_of_decimals=0, functioncode=6, signed=False) #restarts the drive
+			
+			self.rmcs2303_rright.write_register(2, 2304, number_of_decimals=0, functioncode=6, signed=False) #restarts the drive
+			self.rmcs2303_rright.write_register(2, 2304, number_of_decimals=0, functioncode=6, signed=False) #restarts the drive
+			
+			self.rmcs2303_rleft.write_register(2, 2304, number_of_decimals=0, functioncode=6, signed=False) #restarts the drive
+			self.rmcs2303_rleft.write_register(2, 2304, number_of_decimals=0, functioncode=6, signed=False) #restarts the drive
 
 def main(args=None):
 	rclpy.init(args=args)
-
 	minimal_modbus_node = MinimalModbusNode()
-
 	rclpy.spin(minimal_modbus_node)
-
 	minimal_modbus_node.destroy_node()
 	rclpy.shutdown()
 
