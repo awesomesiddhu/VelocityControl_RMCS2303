@@ -31,8 +31,10 @@ class MinimalModbusNode(Node):
 		wheel_radius = 0.1 #meters
 		lin_velocity = msg.linear.x # m/s
 		ang_velocity = msg.angular.z
-		velocity = lin_velocity + 0.05*ang_velocity
-		rpm= abs((velocity / (2*math.pi*wheel_radius))*60*gear_ratio)
+		right_velocity = lin_velocity + 0.05*ang_velocity
+		left_velocity = lin_velocity - 0.05*ang_velocity
+		rpm_right = abs((right_velocity / (2*math.pi*wheel_radius))*60*gear_ratio)
+		rpm_left = abs((left_velocity / (2*math.pi*wheel_radius))*60*gear_ratio)
 
 		try:
 			self.rmcs2303_fright.write_register(2, 2048, number_of_decimals=0, functioncode=6, signed=False) # set encoder count to 0
@@ -40,10 +42,10 @@ class MinimalModbusNode(Node):
 			self.rmcs2303_rright.write_register(2, 2048, number_of_decimals=0, functioncode=6, signed=False) # set encoder count to 0
 			self.rmcs2303_rleft.write_register(2, 2048, number_of_decimals=0, functioncode=6, signed=False) # set encoder count to 0
 			
-			self.rmcs2303_fright.write_register(14, rpm, number_of_decimals=0, functioncode=6, signed=False)  # Speed command for base motor in rpm
-			self.rmcs2303_fleft.write_register(14, rpm, number_of_decimals=0, functioncode=6, signed=False)  # Speed command for base motor in rpm
-			self.rmcs2303_rright.write_register(14, rpm, number_of_decimals=0, functioncode=6, signed=False)  # Speed command for base motor in rpm
-			self.rmcs2303_rleft.write_register(14, rpm, number_of_decimals=0, functioncode=6, signed=False)  # Speed command for base motor in rpm			
+			self.rmcs2303_fright.write_register(14, rpm_right , number_of_decimals=0, functioncode=6, signed=False)  # Speed command for base motor in rpm
+			self.rmcs2303_fleft.write_register(14, rpm_left , number_of_decimals=0, functioncode=6, signed=False)  # Speed command for base motor in rpm
+			self.rmcs2303_rright.write_register(14, rpm_right , number_of_decimals=0, functioncode=6, signed=False)  # Speed command for base motor in rpm
+			self.rmcs2303_rleft.write_register(14, rpm_left , number_of_decimals=0, functioncode=6, signed=False)  # Speed command for base motor in rpm			
 
 			if (velocity>=0):
 				self.rmcs2303_fright.write_register(2, 257, number_of_decimals=0, functioncode=6, signed=False) # Enable fright motor in CW
@@ -61,7 +63,8 @@ class MinimalModbusNode(Node):
 			rright_speed_feedback = self.rmcs2303_rright.read_register(24) #current speed feedback
 			rleft_speed_feedback = self.rmcs2303_rleft.read_register(24) #current speed feedback
 			#print("Speed feedback : ", fright_speed_feedback, fleft_speed_feedback, rright_speed_feedback, rleft_speed_feedback )
-			print("Velocity : ", velocity)
+			#print("Velocity : ", velocity)
+			
 
 		except KeyboardInterrupt:
 			if (velocity>=0):
