@@ -13,21 +13,20 @@ This repository contains a ROS (Robot Operating System) node for controlling the
 - Python 3
 
 ## Installation
-1. Install ROS on your system if not already installed.
+1. Install ROS2 Humble on your system if not already installed.
 2. Install the MinimalModbus library by running:
    ```bash
    pip install minimalmodbus
    ```
-3. Clone this repository into your ROS workspace (e.g., catkin_ws/src).
+   Or visit the website: https://minimalmodbus.readthedocs.io/en/stable/installation.html
 
 ## Usage
 1. Connect the RMCS-5024 motor to the RMCS2303 Motor Driver.
-2. Connect the RMCS2303 Motor Driver to your computer via USB.
+2. Connect the RMCS2303 Motor Driver to your computer as specified in the user manual.
 3. Build your ROS workspace:
    ```bash
-   cd catkin_ws
-   catkin_make
-   source devel/setup.bash
+   cd ros2_ws
+   colcon build
    ```
 4. Run the ROS node:
    ```bash
