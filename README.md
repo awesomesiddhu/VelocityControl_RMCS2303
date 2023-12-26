@@ -32,7 +32,7 @@ This repository contains a ROS (Robot Operating System) node for controlling the
    ```bash
    rosrun your_package_name minimal_modbus_node.py
    ```
-   Replace `your_package_name` with the name of your ROS package.
+   Replace `your_package_name` with the name of your ROS package and `minimal_modbus_node` with the name of your python script.
 
 5. Publish Twist messages to the `/cmd_vel` topic to control the motor.
 
