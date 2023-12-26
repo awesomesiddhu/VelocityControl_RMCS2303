@@ -42,7 +42,7 @@ This code is designed for use with the Rhino 200RPM 15Kgcm DC Planetary Geared H
 ## Disclaimer
 Please be cautious when working with hardware, especially when dealing with motors and motor drivers. Ensure proper connections and safety precautions to prevent damage to equipment or injury.
 
-Feel free to reach out for any issues or questions related to this code. Contributions and improvements are welcome!
+Feel free to reach out for any issues or questions related to this code.
 
 ## Author
 Name: Siddharth D Srinivas
