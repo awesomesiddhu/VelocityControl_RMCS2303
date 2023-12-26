@@ -1,14 +1,14 @@
-# MinimalModbus ROS Node for RMCS-5024 Motor and RMCS2303 Motor Driver
+# MinimalModbus ROS2 Node for RMCS-5024 Motor and RMCS2303 Motor Driver
 
 ## Overview
-This repository contains a ROS (Robot Operating System) node for controlling the RMCS-5024 motor equipped with a Rhino RMCS2303 Motor Driver. The code interfaces with the motor driver using the MinimalModbus library and is designed to control the motor based on Twist messages, providing both linear and angular velocities.
+This repository contains a ROS2 (Robot Operating System) node for controlling the RMCS-5024 motor equipped with a Rhino RMCS2303 Motor Driver. The code interfaces with the motor driver using the MinimalModbus library and is designed to control the motor based on Twist messages, providing both linear and angular velocities.
 
 ## Hardware Requirements
 - Rhino 200RPM 15Kgcm DC Planetary Geared High Precision Encoder Servo Motor (RMCS-5024)
 - RMCS2303 Motor Driver
 
 ## Dependencies
-- ROS (Robot Operating System)
+- ROS2 (Robot Operating System)
 - MinimalModbus library
 - Python 3
 
@@ -23,12 +23,12 @@ This repository contains a ROS (Robot Operating System) node for controlling the
 ## Usage
 1. Connect the RMCS-5024 motor to the RMCS2303 Motor Driver.
 2. Connect the RMCS2303 Motor Driver to your computer as specified in the user manual.
-3. Build your ROS workspace:
+3. Build your ROS2 workspace:
    ```bash
    cd ros2_ws
    colcon build
    ```
-4. Run the ROS node:
+4. Run the ROS2 node:
    ```bash
    rosrun your_package_name minimal_modbus_node.py
    ```
