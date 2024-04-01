@@ -1,8 +1,3 @@
-############################################
-Author: Siddharth D Srinivas 
-Email ID: siddharth.srinivas03@gmail.com 
-LinkedIn: www.linkedin.com/in/siddharth-d-srinivas-855917247
-############################################
 #!/usr/bin/env python3
 
 import rclpy
