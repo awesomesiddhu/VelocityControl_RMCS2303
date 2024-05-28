@@ -2,6 +2,7 @@
 
 ## Overview
 This repository contains a ROS2 (Robot Operating System) node for controlling the RMCS-5024 motor equipped with a Rhino RMCS2303 Motor Driver. The code interfaces with the motor driver using the MinimalModbus library and is designed to control the motor based on Twist messages, providing both linear and angular velocities.
+![rmcs2303_ckt](https://github.com/awesomesiddhu/VelocityControl_RMCS2303/assets/106588411/498bc5c6-3106-4487-8230-0e55731ee094)
 
 ## Hardware Requirements
 - Rhino 200RPM 15Kgcm DC Planetary Geared High Precision Encoder Servo Motor (RMCS-5024)
